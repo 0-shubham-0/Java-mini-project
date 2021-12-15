@@ -37,7 +37,7 @@ public class MainController {
     public void initial(ActionEvent event) throws IOException {
         DatabaseConnection connection = new DatabaseConnection();
         Connection connectDB = connection.getConnected();
-        String getename = "SELECT * FROM Event_Details where eId=" + a;
+        String getename = "SELECT * FROM Event_Details where eId=" +a;
         try {
             Statement statement = connectDB.createStatement();
             ResultSet resultSet = statement.executeQuery(getename);
