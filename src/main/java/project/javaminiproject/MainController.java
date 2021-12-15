@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.skin.CellSkinBase;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -32,12 +31,12 @@ public class MainController {
     @FXML
     private Label eDate;
     @FXML
-    private Hyperlink eLink;
+    private Label eLink;
     //refresh button
     public void initial(ActionEvent event) throws IOException {
         DatabaseConnection connection = new DatabaseConnection();
         Connection connectDB = connection.getConnected();
-        String getename = "SELECT * FROM Event_Details where eId=" +a;
+        String getename = "SELECT * FROM Event_Details where eId=" + a;
         try {
             Statement statement = connectDB.createStatement();
             ResultSet resultSet = statement.executeQuery(getename);
@@ -200,11 +199,10 @@ public class MainController {
     @FXML
     private Label error;
     public void registerdetails(ActionEvent e) {
-        if (!validateLogin()){
         DatabaseConnection connection = new DatabaseConnection();
         Connection connectDB = connection.getConnected();
         String rdetails = "INSERT INTO Registration_details(Firstname,Lastname,Phonenumber,Emailid,Username,Password) VALUES ('" + fName.getText() + "','" + lName.getText() + "','" + num.getText() + "','" + email.getText() + "','" + username.getText() + "','" + password.getText() + "')";
-        if (!fName.getText().isBlank() && !lName.getText().isBlank() && !num.getText().isBlank() && !username.getText().isBlank() && !password.getText().isBlank()) {
+        if (!fName.getText().isEmpty() && !lName.getText().isEmpty() && !num.getText().isEmpty() && !username.getText().isEmpty() && !password.getText().isEmpty()) {
             try {
                 Statement statement = connectDB.createStatement();
                 int a = statement.executeUpdate(rdetails);
@@ -216,9 +214,6 @@ public class MainController {
         } else {
             error.setText("Error");
         }
-    }
-        else
-            error.setText("Already Exists");
     }
     //create events
     public int getMaxId() {
@@ -244,7 +239,7 @@ public class MainController {
     @FXML
     private TextField EventDetails;
     @FXML
-    private TextField EventDate;
+    private DatePicker EventDate;
     @FXML
     private TextField EventTime;
     @FXML
@@ -252,8 +247,8 @@ public class MainController {
     public void createEvent(ActionEvent e) {
         DatabaseConnection connection = new DatabaseConnection();
         Connection connectDB = connection.getConnected();
-        String createvent = "INSERT INTO Event_Details(EventName,EventCategory,EventLink,EventDetails,EventDate,EventTime,eId) VALUES ('" + Eventname.getText() + "','" + EventCatergory.getText() + "','" + EventLink.getText() + "','" + EventDetails.getText() + "','" + EventDate.getText() + "','" + EventTime.getText() + "','" + (1 + getMaxId()) + "')";
-        if (!Eventname.getText().isEmpty() && !EventCatergory.getText().isEmpty() && !EventLink.getText().isEmpty() && !EventDetails.getText().isEmpty() && !EventDate.getText().isEmpty() && !EventTime.getText().isEmpty()) {
+        String createvent = "INSERT INTO Event_Details(EventName,EventCategory,EventLink,EventDetails,EventDate,EventTime,eId) VALUES ('" + Eventname.getText() + "','" + EventCatergory.getText() + "','" + EventLink.getText() + "','" + EventDetails.getText() + "','" + ((TextField) EventDate.getEditor()).getText() + "','" + EventTime.getText() + "','" + (1 + getMaxId()) + "')";
+        if (!Eventname.getText().isEmpty() && !EventCatergory.getText().isEmpty() && !EventLink.getText().isEmpty() && !EventDetails.getText().isEmpty() && !((TextField) EventDate.getEditor()).getText().isEmpty() && !EventTime.getText().isEmpty()) {
             try {
                 Statement statement = connectDB.createStatement();
                 int b = statement.executeUpdate(createvent);
@@ -280,7 +275,7 @@ public class MainController {
                 Eventname.setText(resultSet.getString("EventName"));
                 EventCatergory.setText(resultSet.getString("EventCategory"));
                 EventDetails.setText(resultSet.getString("EventDetails"));
-                EventDate.setText(resultSet.getString("EventDate"));
+                ((TextField) EventDate.getEditor()).setText(resultSet.getString("EventDate"));
                 EventTime.setText(resultSet.getString("EventTime"));
                 EventLink.setText(resultSet.getString("EventLink"));
             }
@@ -289,10 +284,10 @@ public class MainController {
         }
     }
     public void update(ActionEvent event) throws IOException {
-        if (!Eventname.getText().isBlank()&&!EventDetails.getText().isBlank()&&!EventDate.getText().isBlank()&&!EventTime.getText().isBlank()&&!EventLink.getText().isBlank()&&!EventCatergory.getText().isBlank()) {
+        if (!Eventname.getText().isBlank()&&!EventDetails.getText().isBlank()&&!((TextField) EventDate.getEditor()).getText().isBlank()&&!EventTime.getText().isBlank()&&!EventLink.getText().isBlank()&&!EventCatergory.getText().isBlank()) {
             DatabaseConnection connection = new DatabaseConnection();
             Connection connectDB = connection.getConnected();
-            String u = "UPDATE Event_Details SET EventName='" + Eventname.getText() + "',EventCategory='" + EventCatergory.getText() + "',EventLink='" + EventLink.getText() + "',EventDetails='" + EventDetails.getText() + "',EventDate='" + EventDate.getText() + "',EventTime='" + EventTime.getText() + "' WHERE eId=" + a;
+            String u = "UPDATE Event_Details SET EventName='" + Eventname.getText() + "',EventCategory='" + EventCatergory.getText() + "',EventLink='" + EventLink.getText() + "',EventDetails='" + EventDetails.getText() + "',EventDate='" + ((TextField) EventDate.getEditor()).getText() + "',EventTime='" + EventTime.getText() + "' WHERE eId=" + a;
             try {
                 Statement statement = connectDB.createStatement();
                 statement.executeUpdate(u);
