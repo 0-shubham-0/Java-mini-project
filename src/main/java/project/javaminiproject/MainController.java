@@ -6,12 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.skin.CellSkinBase;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.control.PasswordField;
 
 
 import java.io.IOException;
@@ -34,7 +32,7 @@ public class MainController {
     @FXML
     private Label eDate;
     @FXML
-    private Label eLink;
+    private Hyperlink eLink;
     //refresh button
     public void initial(ActionEvent event) throws IOException {
         DatabaseConnection connection = new DatabaseConnection();
@@ -202,10 +200,11 @@ public class MainController {
     @FXML
     private Label error;
     public void registerdetails(ActionEvent e) {
+        if (!validateLogin()){
         DatabaseConnection connection = new DatabaseConnection();
         Connection connectDB = connection.getConnected();
         String rdetails = "INSERT INTO Registration_details(Firstname,Lastname,Phonenumber,Emailid,Username,Password) VALUES ('" + fName.getText() + "','" + lName.getText() + "','" + num.getText() + "','" + email.getText() + "','" + username.getText() + "','" + password.getText() + "')";
-        if (!fName.getText().isEmpty() && !lName.getText().isEmpty() && !num.getText().isEmpty() && !username.getText().isEmpty() && !password.getText().isEmpty()) {
+        if (!fName.getText().isBlank() && !lName.getText().isBlank() && !num.getText().isBlank() && !username.getText().isBlank() && !password.getText().isBlank()) {
             try {
                 Statement statement = connectDB.createStatement();
                 int a = statement.executeUpdate(rdetails);
@@ -217,6 +216,9 @@ public class MainController {
         } else {
             error.setText("Error");
         }
+    }
+        else
+            error.setText("Already Exists");
     }
     //create events
     public int getMaxId() {
