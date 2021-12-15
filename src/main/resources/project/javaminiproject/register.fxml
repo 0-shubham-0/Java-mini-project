@@ -45,8 +45,8 @@
         <TextField fx:id="lName" layoutX="551.0" layoutY="154.0" promptText="Last name" />
         <TextField fx:id="num" layoutX="551.0" layoutY="206.0" prefHeight="25.0" prefWidth="149.0" promptText="Enter your phone number" />
         <TextField fx:id="email" layoutX="555.0" layoutY="264.0" promptText="Enter your email id" />
-        <TextField fx:id="usernametextfield" layoutX="555.0" layoutY="337.0" promptText="Create a username" />
-        <PasswordField fx:id="passwordtextfield" layoutX="555.0" layoutY="383.0" promptText="Create a password" />
+        <TextField fx:id="username" layoutX="555.0" layoutY="337.0" promptText="Create a username" />
+        <PasswordField fx:id="password" layoutX="555.0" layoutY="383.0" promptText="Create a password" />
       <Label fx:id="error" layoutX="506.0" layoutY="410.0" prefHeight="30.0" prefWidth="76.0">
          <font>
             <Font size="16.0" />
