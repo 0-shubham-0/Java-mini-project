@@ -13,7 +13,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.javaminiproject.MainController">
     <children>
-        <Label id="Username" layoutX="529.0" layoutY="188.0" prefHeight="56.0" prefWidth="86.0" text="Username">
+        <Label id="Username" layoutX="523.0" layoutY="188.0" prefHeight="56.0" prefWidth="86.0" text="Username">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -28,7 +28,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-        <Button id="Login" fx:id="Login" layoutX="457.0" layoutY="428.0" mnemonicParsing="false" onAction="#LoginOnAction" prefHeight="44.0" prefWidth="97.0" style="-fx-background-color: #79137c;" text="Login" textFill="WHITE">
+        <Button id="Login" fx:id="Login" layoutX="610.0" layoutY="442.0" mnemonicParsing="false" onAction="#LoginOnAction" prefHeight="44.0" prefWidth="86.0" style="-fx-background-color: #79137c;" text="Login" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -43,12 +43,12 @@
             <Font size="14.0" />
          </font>
       </PasswordField>
-      <Button layoutX="606.0" layoutY="428.0" mnemonicParsing="false" onAction="#SwitchToRegister" prefHeight="44.0" prefWidth="97.0" style="-fx-background-color: #79137c;" text="Register" textFill="WHITE">
+      <Button layoutX="518.0" layoutY="505.0" mnemonicParsing="false" onAction="#SwitchToRegister" prefHeight="44.0" prefWidth="108.0" style="-fx-background-color: #79137c;" text="Register" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="Cancel" layoutX="531.0" layoutY="496.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="97.0" style="-fx-background-color: #79137c;" text="Cancel" textFill="WHITE">
+      <Button fx:id="Cancel" layoutX="454.0" layoutY="442.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="86.0" style="-fx-background-color: #79137c;" text="Cancel" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -59,22 +59,17 @@
             <Image url="@pic2.jpeg" />
          </image>
       </ImageView>
-      <Label layoutX="505.0" layoutY="47.0" prefHeight="26.0" prefWidth="149.0" text="  HEY THERE !!!!!">
+      <Label layoutX="505.0" layoutY="47.0" prefHeight="26.0" prefWidth="149.0" text="  HEY THERE!!!!!">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="518.0" layoutY="81.0" prefHeight="27.0" prefWidth="108.0" text="   WELCOME">
+      <Label layoutX="518.0" layoutY="117.0" prefHeight="27.0" prefWidth="108.0" text="  WELCOME">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <Label fx:id="error" layoutX="552.0" layoutY="411.0" textFill="#f20000" />
-      <ImageView fitHeight="56.0" fitWidth="51.0" layoutX="551.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@login%20icon.png" />
-         </image>
-      </ImageView>
     </children>
     <effect>
         <ColorAdjust />
